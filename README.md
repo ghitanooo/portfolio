@@ -1,4 +1,3 @@
 # Portfolio
  Ghita lahbabi
-[Site web](file:///C:/Users/ghita/Documents/Portfolio/index.html)
-
+ [Site Web](https://ghita-lahbabi.github.io/portfolio/)
