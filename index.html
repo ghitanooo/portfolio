@@ -1,44 +1,139 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-
 <head>
-  <link rel="stylesheet" href="css/style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-  <meta charset="UTF-8">
-
-  <title>Portfolio</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghita Lahbabi - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-  <header>
-    <h1>Ghita Lahbabi</h1>
-  </header>
+    <nav>
+        <a href="#hero">Accueil</a>
+        <a href="#about">À propos</a>
+        <a href="#skills">Compétences</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-  <main>
-    <p><em>English will follow.</em></p>
-    <p>
-      Je me présente, Ghita "Rita" Lahbabi, étudiante en 2e année de génie logiciel à 
-      <a href="https://www.ulaval.ca/" target="_blank">l'Université Laval</a>.
-    </p>
-    <p>blablabla rest de ma présentation</p>
-  </main>
+    <div class="scroll-indicator"></div>
 
-  <footer>
-    <p>&copy; 2025 Ghita Lahbabi</p>
-  </footer>
+    <section id="hero" class="section hero">
+        <h1>GHITA LAHBABI</h1>
+        <p>étudiante 2e année génie logiciel | Université Laval</p>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200&h=500&fit=crop" alt="Hero">
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=800&fit=crop" alt="Paris street">
+        </div>
+        <div class="about-content">
+            <h2>À PROPOS</h2>
+            <div class="about-text">
+                <p>Passionnée par le développement logiciel, je suis curieuse, motivée et toujours prête à apprendre de nouvelles technologies. J'aime travailler en équipe et relever des défis techniques.</p>
+                <p class="placeholder-text" style="margin-top: 20px;">blablabi<br>blablablabla<br>gkdngjghrojlhfvge</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section skills">
+        <div class="skills-container">
+            <h2>COMPÉTENCES</h2>
+            <div class="skills-list">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p class="placeholder-text">xxx,xxx,,xxxxxx</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <p class="placeholder-text">xxx,xxx,,xxx,,xxxx</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Outils</h3>
+                    <p class="placeholder-text">xxx,xxx,,xxxxxx</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Langues</h3>
+                    <p class="placeholder-text">xxx,xxx,,xxx,,xxxx</p>
+                </div>
+            </div>
+            <div class="skills-images">
+                <div class="skill-image">
+                    <img src="https://images.unsplash.com/photo-1541480551145-2370a440d585?w=600&h=400&fit=crop" alt="Compétence 1">
+                </div>
+                <div class="skill-image">
+                    <img src="https://images.unsplash.com/photo-1511406361295-0a1ff814c0ce?w=600&h=400&fit=crop" alt="Compétence 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section projects">
+        <div class="projects-container">
+            <h2>FORMATION</h2>
+            <div class="education">
+                <h3>baccalauréat uLaval</h3>
+                <div class="education-item">
+                    <h4>2024-2028</h4>
+                </div>
+                <h3>DEC sciences de la nature</h3>
+                <div class="education-item">
+                    <h4>2020 - 2023</h4>
+                </div>
+            </div>
+
+            <h2>PROJETS</h2>
+            <div class="projects-list">
+                <div class="project-item">
+                    <h4>Jeu Quixo</h4>
+                    <p>Python, git, github</p>
+                </div>
+                <div class="project-item">
+                    <h4>projet 2</h4>
+                    <p>C++, git, github, Qt...</p>
+                </div>
+            </div>
+
+            <div class="project-images">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop" alt="Projet 1">
+                </div>
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&h=400&fit=crop" alt="Projet 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>CONTACT</h2>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <a href="mailto:ghitalhb864@gmail.com">ghitalhb864@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <h3>LinkedIn</h3>
+                    <a href="#" target="_blank">lien</a>
+                </div>
+                <div class="contact-item">
+                    <h3>Discord</h3>
+                    <a href="#" target="_blank">lien/compte</a>
+                </div>
+                <div class="contact-item">
+                    <h3>GitHub</h3>
+                    <a href="#" target="_blank">lien/compte</a>
+                </div>
+            </div>
+            <div class="contact-image">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600&h=800&fit=crop" alt="Contact">
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
-
-
-
 </html>
