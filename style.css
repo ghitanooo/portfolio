@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'source code pro', monospace;
     background: #faf8f7;
     color: #1a1a1a;
     overflow-x: hidden;
@@ -27,10 +27,11 @@ body {
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: 300%;
     font-weight: 300;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
+    letter-spacing: 0rem;
+    margin-bottom: 0px;
+    margin-top: 30px;
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
 }
@@ -38,7 +39,7 @@ body {
 .hero p {
     font-size: clamp(1rem, 2vw, 1.2rem);
     opacity: 0;
-    animation: fadeInUp 1s ease 0.3s forwards;
+    animation: fadeInUp 3s ease 0.7s forwards;
 }
 
 .hero-image {
@@ -49,7 +50,7 @@ body {
     border-radius: 4px;
     overflow: hidden;
     opacity: 0;
-    animation: fadeInUp 1s ease 0.6s forwards;
+    animation: fadeInUp 1s ease 0.7s forwards;
     position: relative;
 }
 
@@ -58,7 +59,7 @@ body {
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%);
-    transition: transform 0.6s ease, filter 0.6s ease;
+    transition: transform 0.6s ease, filter 0.9s ease;
 }
 
 .hero-image:hover img {
@@ -232,7 +233,7 @@ body {
 .education-item {
     margin-bottom: 30px;
     padding: 20px 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #faf8f7;
     transition: transform 0.3s ease;
 }
 
@@ -248,7 +249,7 @@ body {
 
 .education-item p {
     font-size: 1rem;
-    color: #666;
+    color: #f50000;
 }
 
 .projects-list h3 {
@@ -260,16 +261,8 @@ body {
 .project-item {
     margin-bottom: 40px;
     padding: 30px;
-    background: #faf8f7;
-    border-radius: 4px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
 }
 
-.project-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
 
 .project-item h4 {
     font-size: 1.8rem;
@@ -279,7 +272,7 @@ body {
 
 .project-item p {
     font-size: 1.1rem;
-    color: #666;
+    color: #b50909;
 }
 
 /*
@@ -417,14 +410,14 @@ nav a:hover::after {
 /* Scroll Indicator */
 .scroll-indicator {
     position: fixed;
-    bottom: 40px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 30px;
     height: 50px;
-    border: 2px solid #1a1a1a;
+    border: 2px solid #0c0c0c;
     border-radius: 20px;
-    opacity: 0.6;
+    opacity: 0.9;
     transition: opacity 0.3s ease;
 }
 
@@ -438,7 +431,7 @@ nav a:hover::after {
     height: 8px;
     background: #1a1a1a;
     border-radius: 2px;
-    animation: scroll 1.5s ease-in-out infinite;
+    animation: scroll 2s infinite;;
 }
 
 @keyframes scroll {
@@ -598,7 +591,7 @@ nav a:hover::after {
 
 /* Photography Section */
 .photography {
-  background: #fff3ee;
+  background: #faf8f7;
   text-align: center;
   padding: 80px 20px;
   display: flex;
@@ -607,30 +600,31 @@ nav a:hover::after {
 }
 
 .photography h2 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 30px; /* espace entre titre et slider */
+  font-size: 2.5rem;
+  margin-bottom: 80px; /* espace entre titre et slider */
 }
 
 
 .slider {
   position: relative;
-  max-width: 700px; /* plus petit que la largeur totale */
+  max-width: 800px; /* plus petit que la largeur totale */
   margin: 0 auto;
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow:auto;
+  border-radius: 10px;
+  box-shadow: 0 9px 12px rgba(0,0,0,0.2);
 }
 
 .slides {
-  display: flex;
+  display:inline-flex;
   transition: transform 0.5s ease-in-out;
 }
 
 .slides img {
   width: 100%;
   flex-shrink: 0;
-  object-fit: cover;
-  max-height: 400px; /* limite la hauteur */
+  object-fit:scale-down;
+  max-height: 550px;
+  max-width: 900px;
 }
 
 .prev, .next {
@@ -639,15 +633,130 @@ nav a:hover::after {
   transform: translateY(-50%);
   background: rgba(0,0,0,0.5);
   color: white;
-  border: none;
-  padding: 12px;
+  border:#666;
+  padding: 16px;
   cursor: pointer;
   border-radius: 50%;
 }
 
-.prev { left: 15px; }
-.next { right: 15px; }
+.prev { left: 7px; }
+.next { right: 7px; }
 
 .prev:hover, .next:hover {
-  background: rgba(0,0,0,0.8);
+  background: rgba(255, 255, 255, 0.8);
 }
+
+
+.infos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 60px 40px;
+  background: #faf8f7;
+}
+
+.info-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(175, 20, 20, 0.2);
+}
+
+.info-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.info-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 25px rgba(22, 67, 1, 0.2);
+  background: linear-gradient(130deg, #ffffff, #f0f0f0);
+}
+
+
+/* Uniformiser les cartes */
+.infos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 60px 40px;
+  background: #faf8f7;
+}
+
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(31, 25, 25, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%; /* même hauteur pour toutes les cartes */
+}
+
+/* Uniformiser les titres */
+.info-card h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: 'Press Start 2P', cursive; /* style pixel art 8 bits */
+}
+
+
+/* Uniformiser les sous-titres (h3) */
+.info-card h3 {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  font-family: 'source code pro', monospace; /* style machine */
+  }  
+/* Uniformiser le texte */
+.info-card p, 
+.info-card ul, 
+.info-card li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: 'source code pro', monospace; /* style machine */
+}
+
+/* Listes propres */
+.info-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.info-card li {
+  margin-bottom: 6px;
+}
+
+/* Titres principaux */
+h1, h2, h3 {
+  font-family: "Press Start 2P", cursive;
+  font-weight: 400;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+}
+
+/* Texte normal */
+body, p, li, a {
+  font-family: "source code pro", monospace;
+  font-weight: 500;  /* légèrement gras pour la lisibilité */
+  line-height: 1.6;
+}
+

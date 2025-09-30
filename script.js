@@ -8,14 +8,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Cacher l'indicateur de scroll après avoir scrollé
-window.addEventListener('scroll', () => {
+/*window.addEventListener('scroll', () => {
     const indicator = document.querySelector('.scroll-indicator');
     if (window.scrollY > 100) {
         indicator.style.opacity = '0';
     } else {
         indicator.style.opacity = '0.6';
     }
-});
+}); */
 
 // Intersection Observer pour les animations au scroll
 const observerOptions = {
@@ -72,3 +72,35 @@ function showSlide(i) {
 
 prev.addEventListener('click', () => showSlide(index - 1));
 next.addEventListener('click', () => showSlide(index + 1));
+
+
+
+// Animation au scroll pour les cartes
+const cards = document.querySelectorAll('.info-card');
+
+function checkCards() {
+  const triggerBottom = window.innerHeight * 0.85;
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    if (cardTop < triggerBottom) {
+      card.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', checkCards);
+checkCards(); // pour lancer au chargement
+
+
+document.querySelectorAll('.info-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const { offsetX, offsetY, target } = e;
+    const x = (offsetX / target.offsetWidth - 0.5) * 10; 
+    const y = (offsetY / target.offsetHeight - 0.5) * 10;
+    card.style.transform = `rotateX(${-y}deg) rotateY(${x}deg) scale(1.03)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+  });
+});
