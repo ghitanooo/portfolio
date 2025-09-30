@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Georgia', serif;
-    background: #fff3ee;
+    background: #faf8f7;
     color: #1a1a1a;
     overflow-x: hidden;
 }
@@ -68,7 +68,7 @@ body {
 
 /* About Section */
 .about {
-    background: #fff3ee;
+    background: #faf8f7;
     flex-direction: row;
     gap: 60px;
     padding: 100px 60px;
@@ -132,7 +132,7 @@ body {
 /* Skills Section */
 .skills {
     padding: 100px 60px;
-    background: #fff3ee;
+    background: #faf8f7;
     }
 
 .skills-container {
@@ -202,7 +202,7 @@ body {
 /* Projects Section */
 
 .projects {
-    background: #fff3ee;
+    background: #faf8f7;
     padding: 100px 60px;
 }
 
@@ -260,7 +260,7 @@ body {
 .project-item {
     margin-bottom: 40px;
     padding: 30px;
-    background: #fff3ee;
+    background: #faf8f7;
     border-radius: 4px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -313,7 +313,7 @@ body {
 
 /* Contact Section */
 .contact {
-    background: #1a1a1a;
+    background: #222222;
     color: #fff;
     padding: 100px 60px;
 }
@@ -540,7 +540,7 @@ nav a:hover::after {
 .formation-col, .projets-col {
     display: flex;
     flex-direction: column;
-    background: #fff3ee;
+    background: #faf8f7;
     padding: 24px 18px;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
@@ -593,4 +593,61 @@ nav a:hover::after {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+}
+
+
+/* Photography Section */
+.photography {
+  background: #fff3ee;
+  text-align: center;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column; /* Titre en haut + slider en dessous */
+  align-items: center; /* Centrer le slider */
+}
+
+.photography h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 30px; /* espace entre titre et slider */
+}
+
+
+.slider {
+  position: relative;
+  max-width: 700px; /* plus petit que la largeur totale */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  max-height: 400px; /* limite la hauteur */
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
 }
