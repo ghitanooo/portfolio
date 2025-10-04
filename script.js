@@ -8,14 +8,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Cacher l'indicateur de scroll après avoir scrollé
-/*window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
     const indicator = document.querySelector('.scroll-indicator');
     if (window.scrollY > 100) {
         indicator.style.opacity = '0';
     } else {
         indicator.style.opacity = '0.6';
     }
-}); */
+}); 
 
 // Intersection Observer pour les animations au scroll
 const observerOptions = {
