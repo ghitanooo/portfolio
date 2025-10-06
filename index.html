@@ -4,11 +4,637 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghita Lahbabi - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'source code pro', monospace;
+    background: #faf8f7;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+/* Hero Section */
+.hero {
+    flex-direction: column;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 300%;
+    font-weight: 300;
+    letter-spacing: 0rem;
+    margin-bottom: 0px;
+    margin-top: 30px;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0;
+    animation: fadeInUp 3s ease 0.7s forwards;
+}
+
+.hero-image {
+    width: 90%;
+    max-width: 1200px;
+    height: 500px;
+    margin-top: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.7s forwards;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.6s ease, filter 0.9s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+/* About Section */
+.about {
+    background: #faf8f7;
+    flex-direction: row;
+    gap: 60px;
+    padding: 100px 60px;
+}
+
+.about-content {
+    flex: 1;
+    max-width: 800px;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 500px;
+    height: 600px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.8s ease, filter 0.8s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.08);
+    filter: grayscale(0%);
+}
+
+.about h2 {
+    font-size: clamp(2.5rem, 5vw, 2rem);
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+}
+
+.about-text {
+    padding: 40px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(78, 84, 63, 0.2);
+}
+
+.placeholder-text {
+    color: #999;
+    font-style: italic;
+}
+
+/* Contact Section */
+.contact {
+    background: #222222;
+    color: #fff;
+    padding: 100px 60px;
+}
+
+.contact-container {
+    max-width: 1400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact-info h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 60px;
+    letter-spacing: 0.05em;
+}
+
+.contact-item {
+    margin-bottom: 40px;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+}
+
+.contact-item h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #b3a07d;
+}
+
+.contact-image {
+    height: 600px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.contact-image:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #383f2e;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    border: 2px solid #0c0c0c;
+    border-radius: 20px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: #1a1a1a;
+    border-radius: 2px;
+    animation: scroll 2s infinite;
+}
+
+/* Animations */
+@keyframes scroll {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(12px); opacity: 0; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Photography Section - GRILLE 3x3 */
+.photography {
+    background: #1a1a1a;
+    min-height: 100vh;
+    padding: 100px 40px;
+    position: relative;
+}
+
+.photography h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 80px;
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(50%) brightness(0.8);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.photo-item:hover img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.1);
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    padding: 30px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.photo-item:hover .photo-overlay {
+    transform: translateY(0);
+}
+
+.photo-overlay p {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Lightbox moderne avec taille ajustée */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 70vw;
+    max-height: 70vh;
+    position: relative;
+    animation: zoomIn 0.3s ease;
+}
+
+.lightbox-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10000;
+    font-weight: 300;
+}
+
+.lightbox-close:hover {
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    transform: rotate(90deg);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 20px 15px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    z-index: 10000;
+    font-weight: 300;
+}
+
+.lightbox-nav:hover {
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    transform: translateY(-50%) translateX(0) scale(1.1);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.lightbox-prev {
+    left: 40px;
+}
+
+.lightbox-prev:hover {
+    transform: translateY(-50%) translateX(-5px) scale(1.1);
+}
+
+.lightbox-next {
+    right: 40px;
+}
+
+.lightbox-next:hover {
+    transform: translateY(-50%) translateX(5px) scale(1.1);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Info Cards Section */
+.infos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 60px 40px;
+    background: #faf8f7;
+}
+
+.info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(31, 25, 25, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.info-card:hover {
+    animation: flipIn 0.8s ease-out;
+}
+
+@keyframes flipIn {
+    0% { 
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotateY(-10deg);
+        opacity: 1;
+    }
+    70% {
+        transform: perspective(400px) rotateY(10deg);
+    }
+    100% { 
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.info-card h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    font-family: 'source code pro', monospace;
+}
+
+.info-card p, 
+.info-card ul, 
+.info-card li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'source code pro', monospace;
+}
+
+.info-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-card li {
+    margin-bottom: 6px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: "Press Start 2P", cursive;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+}
+
+body, p, li, a {
+    font-family: "source code pro", monospace;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .about, .contact-container {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        top: 20px;
+        right: 20px;
+        gap: 20px;
+    }
+
+    .section {
+        padding: 40px 20px;
+    }
+
+    .contact {
+        padding: 60px 20px;
+    }
+
+    .infos {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .lightbox-content {
+        max-width: 85vw;
+        max-height: 85vh;
+    }
+
+    .lightbox-nav {
+        padding: 15px 12px;
+        font-size: 1.2rem;
+    }
+
+    .lightbox-prev {
+        left: 20px;
+    }
+
+    .lightbox-next {
+        right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    .photography h2 {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .lightbox {
+        padding: 60px 20px;
+    }
+
+    .lightbox-content {
+        max-width: 90vw;
+        max-height: 80vh;
+    }
+}
+    </style>
 </head>
 <body>
     <nav>
@@ -37,86 +663,137 @@
         <div class="about-content">
             <h2>À PROPOS</h2>
             <div class="about-text">
-                <p>Passionnée par le développement logiciel, je suis curieuse, motivée et toujours prête à apprendre de nouvelles technologies. J'aime travailler en équipe et relever des défis techniques.</p>
+                <p>Passionnée par le développement logiciel, je suis curieuse, motivée et toujours prête à apprendre de nouvelles technologiesblablablablablabla blablablablablablablablabla.</p>
                 <p class="placeholder-text" style="margin-top: 20px;">blablabi<br>blablablabla<br>gkdngjghrojlhfvge</p>
             </div>
         </div>
     </section>
 
     <section id="infos" class="infos">
-  <div class="info-card">
-    <h2>💻 COMPETENCES</h2>
-    <div class="skills-list">
-      <div class="skill-category">
-        <h3>Languages</h3>
-        <p>Python | C++ | HTML | CSS | Javascript</p>
-      </div>
-      <div class="skill-category">
-        <h3>Frameworks</h3>
-        <p>xxx,xxx,,xxx,,xxxx</p>
-      </div>
-      <div class="skill-category">
-        <h3>Outils</h3>
-        <p>Git | GitHub | VsCode | Linux | Bash</p>
-      </div>
-      <div class="skill-category">
-        <h3>Langues</h3>
-        <p>Français | Anglais | Arabe | Espagnol (notions)</p>
-      </div>
-    </div>
-  </div>
+        <div class="info-card">
+            <h2>💻 COMPETENCES</h2>
+            <div class="skills-list">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>Python | C++ | HTML | CSS | Javascript</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <p>xxx,xxx,,xxx,,xxxx</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Outils</h3>
+                    <p>Git | GitHub | VsCode | Linux | Bash</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Langues</h3>
+                    <p>Français | Anglais | Arabe | Espagnol (notions)</p>
+                </div>
+            </div>
+        </div>
 
-  <div class="info-card">
-    <h2>👩‍🎓 FORMATION</h2>
-    <div class="education-item">
-      <h3>Baccalauréat en génie logiciel</h3>
-      <p>Université Laval</p>
-      <p>2024 - 2028</p>
-    </div>
-    <div class="education-item">
-      <h3>DEC sciences de la nature</h3>
-      <p>Cégep Garneau</p>
-      <p>2020 - 2023</p>
-    </div>
-  </div>
+        <div class="info-card">
+            <h2>👩‍🎓 FORMATION</h2>
+            <div class="education-item">
+                <h3>Baccalauréat en génie logiciel</h3>
+                <p>Université Laval</p>
+                <p>2024 - 2028</p>
+            </div>
+            <div class="education-item">
+                <h3>DEC sciences de la nature</h3>
+                <p>Cégep Garneau</p>
+                <p>2020 - 2023</p>
+            </div>
+        </div>
 
-  <div class="info-card">
-    <h2>⌨️ PROJETS</h2>
-    <div class="project-item">
-      <h3>Jeu Quixo</h3>
-      <p>Python, Git, GitHub</p>
-    </div>
-    <div class="project-item">
-      <h3>Projet 2</h3>
-      <p>C++, Git, GitHub, Qt…</p>
-    </div>
-    <div class="project-item">
-      <h3>Réseau de restos</h3>
-      <p>Javascript, React...</p>
-    </div>
-  </div>
-</section>
+        <div class="info-card">
+            <h2>⌨️ PROJETS</h2>
+            <div class="project-item">
+                <h3>Jeu Quixo</h3>
+                <p>Python, Git, GitHub</p>
+            </div>
+            <div class="project-item">
+                <h3>Projet 2</h3>
+                <p>C++, Git, GitHub, Qt…</p>
+            </div>
+            <div class="project-item">
+                <h3>Réseau de restos</h3>
+                <p>Javascript, React...</p>
+            </div>
+        </div>
+    </section>
 
-
-<section id="photography" class="section photography">
-  <h2>PHOTOGRAPHIE</h2>
-  <div class="slider">
-    <div class="slides">
-      <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278080524718242/image.jpg?ex=68dc172f&is=68dac5af&hm=ced9cba80db714c3e59cd890fa8e2965c66398c89acf5948b9202e0077ea97d5&" alt="Photo 1">
-      <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278006331670578/image.jpg?ex=68dc171d&is=68dac59d&hm=ee67ada58a78c5549354c3379784cb79de87a8b127c1a27202c3e0e15efd6141&" alt="Photo 2">
-      <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422275791915319407/image.jpg?ex=68dc150d&is=68dac38d&hm=43ac2f06e695becd90a05444e8ec59ef1ab4c7d6d8b3691426c4adb87c843f18&" alt="Photo 3">
-      <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278009154437191/image.jpg?ex=68dc171e&is=68dac59e&hm=5fcc8772769c2308aaac12b8f3d949da7ab67b4256f115011dd3275141c120c5&" alt="Photo 4">
-    </div>
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-  </div>
-</section>
-
-</section>
+    <!-- SECTION PHOTOGRAPHIE - GRILLE 3x3 -->
+    <section id="photography" class="photography">
+        <h2>PHOTOGRAPHIE</h2>
+        <div class="photo-grid">
+            <div class="photo-item" data-index="0">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278080524718242/image.jpg?ex=68dc172f&is=68dac5af&hm=ced9cba80db714c3e59cd890fa8e2965c66398c89acf5948b9202e0077ea97d5&" alt="Photo 1">
+                <div class="photo-overlay">
+                    <p>Photo 1</p>
+                </div>
+            </div>
+            <div class="photo-item" data-index="1">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278006331670578/image.jpg?ex=68dc171d&is=68dac59d&hm=ee67ada58a78c5549354c3379784cb79de87a8b127c1a27202c3e0e15efd6141&" alt="Photo 2">
+                <div class="photo-overlay">
+                    <p>Photo 2</p>
+                </div>
+            </div>
+            <div class="photo-item" data-index="2">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422275791915319407/image.jpg?ex=68dc150d&is=68dac38d&hm=43ac2f06e695becd90a05444e8ec59ef1ab4c7d6d8b3691426c4adb87c843f18&" alt="Photo 3">
+                <div class="photo-overlay">
+                    <p>Photo 3</p>
+                </div>
+            </div>
+            <div class="photo-item" data-index="3">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278009154437191/image.jpg?ex=68dc171e&is=68dac59e&hm=5fcc8772769c2308aaac12b8f3d949da7ab67b4256f115011dd3275141c120c5&" alt="Photo 4">
+                <div class="photo-overlay">
+                    <p>Photo 4</p>
+                </div>
+            </div>
+            <!-- RAJOUTER PHOTOS ICIIIIIIIIIII -->
+            <div class="photo-item" data-index="4">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278080524718242/image.jpg?ex=68dc172f&is=68dac5af&hm=ced9cba80db714c3e59cd890fa8e2965c66398c89acf5948b9202e0077ea97d5&" alt="Photo 5">
+                <div class="photo-overlay">
+                    <p>Photo 5</p>
+                </div>
+            </div>
+            <div class="photo-item" data-index="5">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278006331670578/image.jpg?ex=68dc171d&is=68dac59d&hm=ee67ada58a78c5549354c3379784cb79de87a8b127c1a27202c3e0e15efd6141&" alt="Photo 6">
+                <div class="photo-overlay">
+                    <p>Photo 6</p>
+                </div>
+            </div>
+            <div class="photo-item" data-index="6">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422275791915319407/image.jpg?ex=68dc150d&is=68dac38d&hm=43ac2f06e695becd90a05444e8ec59ef1ab4c7d6d8b3691426c4adb87c843f18&" alt="Photo 7">
+                <div class="photo-overlay">
+                    <p>Photo 7</p>
+                </div>
+            </div>
+            <div class="photo-item" data-index="7">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278009154437191/image.jpg?ex=68dc171e&is=68dac59e&hm=5fcc8772769c2308aaac12b8f3d949da7ab67b4256f115011dd3275141c120c5&" alt="Photo 8">
+                <div class="photo-overlay">
+                    <p>Photo 8</p>
+                </div>
+            </div>
+            <div class="photo-item" data-index="8">
+                <img src="https://cdn.discordapp.com/attachments/1051260657107992718/1422278080524718242/image.jpg?ex=68dc172f&is=68dac5af&hm=ced9cba80db714c3e59cd890fa8e2965c66398c89acf5948b9202e0077ea97d5&" alt="Photo 9">
+                <div class="photo-overlay">
+                    <p>Photo 9</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Lightbox moderne avec boutons stylés -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-nav lightbox-prev">‹</button>
+        <div class="lightbox-content">
+            <img src="" alt="Photo agrandie">
+        </div>
+        <button class="lightbox-nav lightbox-next">›</button>
+    </div>
 
     <section id="contact" class="section contact">
         <div class="contact-container">
@@ -145,6 +822,142 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <script>
+// Smooth scrolling pour les liens de navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+// Cacher l'indicateur de scroll après avoir scrollé
+window.addEventListener('scroll', () => {
+    const indicator = document.querySelector('.scroll-indicator');
+    if (window.scrollY > 100) {
+        indicator.style.opacity = '0';
+    } else {
+        indicator.style.opacity = '0.6';
+    }
+}); 
+
+// Intersection Observer pour les animations au scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observer tous les éléments qui doivent apparaître progressivement
+document.querySelectorAll('.skill-category, .project-item, .education-item, .contact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// Effet parallaxe sur les images
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const images = document.querySelectorAll('.hero-image img, .about-image img');
+    images.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const speed = 0.5;
+            const yPos = -(rect.top * speed);
+            img.style.transform = `translateY(${yPos}px) scale(1.1)`;
+        }
+    });
+});
+
+// Animation au scroll pour les cartes
+const cards = document.querySelectorAll('.info-card');
+
+function checkCards() {
+    const triggerBottom = window.innerHeight * 0.85;
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < triggerBottom && !card.classList.contains('visible')) {
+            card.classList.add('visible');
+            card.style.animation = 'flipIn 0.8s ease-out';
+        }
+    });
+}
+
+window.addEventListener('scroll', checkCards);
+checkCards();
+
+
+
+// Lightbox pour la galerie photo
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+const photoItems = document.querySelectorAll('.photo-item');
+const closeBtn = lightbox.querySelector('.lightbox-close');
+const prevBtn = lightbox.querySelector('.lightbox-prev');
+const nextBtn = lightbox.querySelector('.lightbox-next');
+
+let currentPhotoIndex = 0;
+const photos = Array.from(photoItems).map(item => item.querySelector('img').src);
+
+// Ouvrir le lightbox
+photoItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        currentPhotoIndex = index;
+        openLightbox();
+    });
+});
+
+function openLightbox() {
+    lightbox.classList.add('active');
+    lightboxImg.src = photos[currentPhotoIndex];
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Fermer le lightbox
+closeBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Navigation dans le lightbox
+prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+    lightboxImg.src = photos[currentPhotoIndex];
+});
+
+nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+    lightboxImg.src = photos[currentPhotoIndex];
+});
+
+// Navigation au clavier
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') {
+        closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+        prevBtn.click();
+    } else if (e.key === 'ArrowRight') {
+        nextBtn.click();
+    }
+});
