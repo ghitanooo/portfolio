@@ -110,12 +110,9 @@ body {
 }
 
 .about-text {
-    /*border: 2px solid #273d2c;
-    */
     padding: 40px;
     font-size: 1.1rem;
     line-height: 1.8;
-    
     margin-bottom: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -130,7 +127,7 @@ body {
     font-style: italic;
 }
 
-
+/* Contact Section */
 .contact {
     background: #222222;
     color: #fff;
@@ -257,9 +254,10 @@ nav a:hover::after {
     height: 8px;
     background: #1a1a1a;
     border-radius: 2px;
-    animation: scroll 2s infinite;;
+    animation: scroll 2s infinite;
 }
 
+/* Animations */
 @keyframes scroll {
     0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
     50% { transform: translateX(-50%) translateY(12px); opacity: 0; }
@@ -276,14 +274,135 @@ nav a:hover::after {
     }
 }
 
+/* Photography Section */
+.photography {
+    background: #faf8f7;
+    text-align: center;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photography h2 {
+    font-size: 2.5rem;
+    margin-bottom: 80px;
+}
+
+.slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 0 9px 12px rgba(0,0,0,0.2);
+}
+
+.slides {
+    display: inline-flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: scale-down;
+    max-height: 550px;
+    max-width: 900px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: #666;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev { left: 7px; }
+.next { right: 7px; }
+
+.prev:hover, .next:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Info Cards Section */
+.infos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 60px 40px;
+    background: #faf8f7;
+}
+
+.info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(31, 25, 25, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.info-card h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    font-family: 'source code pro', monospace;
+}
+
+.info-card p, 
+.info-card ul, 
+.info-card li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'source code pro', monospace;
+}
+
+.info-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-card li {
+    margin-bottom: 6px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: "Press Start 2P", cursive;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+}
+
+body, p, li, a {
+    font-family: "source code pro", monospace;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
-    .about, .contact-container, .skills-container {
+    .about, .contact-container {
         flex-direction: column;
-        grid-template-columns: 1fr;
-    }
-
-    .project-images {
         grid-template-columns: 1fr;
     }
 
@@ -297,8 +416,12 @@ nav a:hover::after {
         padding: 40px 20px;
     }
 
-    .skills, .projects, .contact {
+    .contact {
         padding: 60px 20px;
+    }
+
+    .infos {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -311,136 +434,3 @@ nav a:hover::after {
         border-radius: 4px;
     }
 }
-
-/* Photography Section */
-.photography {
-  background: #faf8f7;
-  text-align: center;
-  padding: 80px 20px;
-  display: flex;
-  flex-direction: column; /* Titre en haut + slider en dessous */
-  align-items: center; /* Centrer le slider */
-}
-
-.photography h2 {
-  font-size: 2.5rem;
-  margin-bottom: 80px; /* espace entre titre et slider */
-}
-
-
-.slider {
-  position: relative;
-  max-width: 800px; /* plus petit que la largeur totale */
-  margin: 0 auto;
-  overflow:auto;
-  border-radius: 10px;
-  box-shadow: 0 9px 12px rgba(0,0,0,0.2);
-}
-
-.slides {
-  display:inline-flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slides img {
-  width: 100%;
-  flex-shrink: 0;
-  object-fit:scale-down;
-  max-height: 550px;
-  max-width: 900px;
-}
-
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border:#666;
-  padding: 16px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.prev { left: 7px; }
-.next { right: 7px; }
-
-.prev:hover, .next:hover {
-  background: rgba(255, 255, 255, 0.8);
-}
-
-
-/* Uniformiser les cartes */
-.infos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 60px 40px;
-  background: #faf8f7;
-}
-
-.info-card {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(31, 25, 25, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%; /* même hauteur pour toutes les cartes */
-}
-
-/* Uniformiser les titres */
-.info-card h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 40px;
-  font-family: 'Press Start 2P', cursive; /* style pixel art 8 bits */
-}
-
-
-/* Uniformiser les sous-titres (h3) */
-.info-card h3 {
-  font-size: 1.2rem;
-  font-weight: 900;
-  margin-bottom: 10px;
-  font-family: 'source code pro', monospace; /* style machine */
-  }  
-/* Uniformiser le texte */
-.info-card p, 
-.info-card ul, 
-.info-card li {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 10px;
-  font-family: 'source code pro', monospace; /* style machine */
-}
-
-/* Listes propres */
-.info-card ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.info-card li {
-  margin-bottom: 6px;
-}
-
-/* Titres principaux */
-h1, h2, h3 {
-  font-family: "Press Start 2P", cursive;
-  font-weight: 400;
-  letter-spacing: 0px;
-  text-transform: uppercase;
-}
-
-/* Texte normal */
-body, p, li, a {
-  font-family: "source code pro", monospace;
-  font-weight: 500;  /* légèrement gras pour la lisibilité */
-  line-height: 1.6;
-}
-
